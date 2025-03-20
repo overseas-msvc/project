@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: project-container
-        image: hhana982/project:1.0
+        image: hhana982/project:1.<version>
         ports:
         - containerPort: 5000
         env: 
