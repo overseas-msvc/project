@@ -22,8 +22,10 @@ def get_projects():
 def get_project():
 	data = request.json
 	db = Database("Project")
-	objects = db.get_object_by_id("Project", data["id"], inJson=True)
-	return json.dumps(objects), 200
+	object = db.get_object_by_id("Project", data["id"], inJson=True)
+	if not object:
+		return "no object found", 400
+	return json.dumps(object), 200
 	
 
 @app.route("/project", methods=["POST"])
@@ -31,7 +33,7 @@ def create_project():
 	data = request.json
 	db = Database("Project")
 	if db.get_list_of_objects('Project',conditions={"name": data["name"]}):
-		return f"project with name '{data["name"]}' already exists", 400
+		return f"project with name \'{data['name']}\' already exists", 400
 	id = db.add_object("Project", data)
 	return json.dumps({"id": id}), 201
 
