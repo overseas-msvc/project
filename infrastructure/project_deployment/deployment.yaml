@@ -3,15 +3,18 @@ kind: Deployment
 metadata:
   name: project
   labels:
+    app: project
     service: project
 spec:
   replicas: 1
   selector:
     matchLabels:
+      app: project
       service: project
   template:
     metadata:
       labels:
+        app: project
         service: project
     spec:
       containers:
