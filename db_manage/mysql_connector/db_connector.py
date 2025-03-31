@@ -2,7 +2,7 @@
 import re
 import json
 import mysql.connector
-from db_manage.local_values import *
+from db_manage.values import *
 import logging
 
 class DBConnector:
